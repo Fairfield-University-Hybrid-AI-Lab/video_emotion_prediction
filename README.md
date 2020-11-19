@@ -7,8 +7,10 @@ person is using a virtual reality headset or brain activity sensors.
 
 This repository contains:
 
-1. [Bounding box and annotation overlay code](boundingbox.py) for testing the existing video dataset.
-2. TODO
+1. [Bounding box and annotation overlay code](danushka/boundingbox.py) for testing the existing video dataset.
+2. [Extract faces from videos](danushka/extractfaces.py)
+3. [Calculate class edges for affectnet dataset (csv file) using quantiles](danushka/quantilescript.py)
+4. [Calculate class edges for emotion in the wild dataset using annotations](danushka/annotations_quantilescript.py)
 
 
 
