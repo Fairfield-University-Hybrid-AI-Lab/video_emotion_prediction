@@ -9,7 +9,6 @@ print(tf.__version__)
 batch_size = 32
 img_height = 180
 img_width = 180
-#Update data root to point at valence dataset 
 data_root="/Users/sallyann/Documents/Fall 2020/Capstone/aff_wild_annotations_bboxes_landmarks_new/videos/dataset_valence/"
 
 
@@ -38,7 +37,7 @@ test_ds = tf.keras.preprocessing.image_dataset_from_directory(
 )
 
 
-#gets three classs of valence (high,low,neutral)
+#gets three classs of arousal (high,low,neutral)
 class_names = train_ds.class_names
 print(class_names)
 import matplotlib.pyplot as plt
@@ -70,7 +69,7 @@ first_image = image_batch[0]
 
 
 
-#Build model using relu activation
+
 model = tf.keras.Sequential([
   layers.experimental.preprocessing.Rescaling(1./255),
   layers.Conv2D(32, 3, activation='relu'),
@@ -87,7 +86,7 @@ model = tf.keras.Sequential([
 
 
 
-#Set epochs to 5 for inital prototype 
+
 model.compile(
   optimizer='adam',
   loss=tf.losses.SparseCategoricalCrossentropy(from_logits=True),
@@ -95,11 +94,11 @@ model.compile(
 model.fit(
   train_ds,
   validation_data=val_ds,
-  epochs=5
+  epochs=10
 )
 
 
-
+model.save("/Users/sallyann/Documents/Fall 2020/Capstone/Valence Testing/Valence_20Epochs.hdf5")
 
 #result = model.evaluate(test_ds)
 #dict(zip(model.metrics_names, result))
